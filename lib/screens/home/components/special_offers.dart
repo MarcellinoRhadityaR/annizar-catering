@@ -1,6 +1,7 @@
+import 'package:catering6/components/package_card.dart';
+import 'package:catering6/models/Package.dart';
+import 'package:catering6/screens/details/details_package.dart';
 import 'package:flutter/material.dart';
-import 'package:catering6/screens/products/products_screen.dart';
-
 import 'section_title.dart';
 
 class SpecialOffers extends StatelessWidget {
@@ -19,24 +20,30 @@ class SpecialOffers extends StatelessWidget {
             press: () {},
           ),
         ),
+        const SizedBox(height: 10),
         SingleChildScrollView(
           scrollDirection: Axis.horizontal,
           child: Row(
             children: [
-              SpecialOfferCard(
-                image: "assets/images/B1.png",
-                category: "Makanan",
-                numOfBrands: 18,
-                press: () {
-                  Navigator.pushNamed(context, ProductsScreen.routeName);
-                },
-              ),
-              SpecialOfferCard(
-                image: "assets/images/B3.png",
-                category: "Minuman",
-                numOfBrands: 24,
-                press: () {
-                  Navigator.pushNamed(context, ProductsScreen.routeName);
+              ...List.generate(
+                demoPackage.take(2).length,
+                (index) {
+                  if (demoPackage[index].isPopular) {
+                    return Padding(
+                      padding: const EdgeInsets.only(left: 20),
+                      child: PackageCard(
+                        package: demoPackage[index],
+                        onPress: () => Navigator.pushNamed(
+                          context,
+                          DetailsPackage.routeName,
+                          arguments: PackageDetailsArguments(
+                              package: demoPackage[index]),
+                        ),
+                      ),
+                    );
+                  }
+                  return const SizedBox
+                      .shrink(); // here by default width and height is 0
                 },
               ),
               const SizedBox(width: 20),
