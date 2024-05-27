@@ -1,12 +1,8 @@
-import 'package:catering6/constants.dart';
-import 'package:catering6/routes.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'components/profile_menu.dart';
-import 'components/profile_pic.dart';
 import '../sign_in/sign_in_screen.dart';
 import 'components/helpcenter_screen.dart';
 import 'components/myaccount_screen.dart';
@@ -72,9 +68,12 @@ class _ProfileScreenState extends State<ProfileScreen> {
               },
               child: CircleAvatar(
                 radius: 50,
-                backgroundImage: _imagePath.isNotEmpty ? AssetImage(_imagePath) : null,
+                backgroundImage:
+                    _imagePath.isNotEmpty ? AssetImage(_imagePath) : null,
                 backgroundColor: Colors.orange, // Warna latar belakang avatar
-                child: _imagePath.isEmpty ? Icon(Icons.add_a_photo, color: Colors.white) : null, // Icon tambah foto
+                child: _imagePath.isEmpty
+                    ? Icon(Icons.add_a_photo, color: Colors.white)
+                    : null, // Icon tambah foto
               ),
             ),
             const SizedBox(height: 20),
@@ -116,14 +115,16 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           Navigator.pop(context);
                         },
                         child: const Text("CANCEL"),
-                        style: TextButton.styleFrom(foregroundColor: Colors.orange),
+                        style: TextButton.styleFrom(
+                            foregroundColor: Colors.orange),
                       ),
                       TextButton(
                         onPressed: () async {
                           await _logout(context);
                         },
                         child: const Text("YES"),
-                        style: TextButton.styleFrom(foregroundColor: Colors.orange),
+                        style: TextButton.styleFrom(
+                            foregroundColor: Colors.orange),
                       ),
                     ],
                   ),
