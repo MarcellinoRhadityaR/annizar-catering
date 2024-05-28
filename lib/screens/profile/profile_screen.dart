@@ -19,14 +19,14 @@ class ProfileScreen extends StatefulWidget {
 class _ProfileScreenState extends State<ProfileScreen> {
   late String _imagePath = ""; // Path to user image
 
-  Future<void> _pickImage(ImageSource source) async {
-    final pickedFile = await ImagePicker().getImage(source: source);
-    if (pickedFile != null) {
-      setState(() {
-        _imagePath = pickedFile.path;
-      });
-    }
-  }
+  // Future<void> _pickImage(ImageSource source) async {
+  //   final pickedFile = await ImagePicker().getImage(source: source);
+  //   if (pickedFile != null) {
+  //     setState(() {
+  //       _imagePath = pickedFile.path;
+  //     });
+  //   }
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -49,7 +49,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                             title: Text('Choose from gallery'),
                             onTap: () {
                               Navigator.pop(context);
-                              _pickImage(ImageSource.gallery);
+                              // _pickImage(ImageSource.gallery);
                             },
                           ),
                           ListTile(
@@ -57,7 +57,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                             title: Text('Take a photo'),
                             onTap: () {
                               Navigator.pop(context);
-                              _pickImage(ImageSource.camera);
+                              // _pickImage(ImageSource.camera);
                             },
                           ),
                         ],

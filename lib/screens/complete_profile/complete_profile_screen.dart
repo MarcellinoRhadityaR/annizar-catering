@@ -1,12 +1,19 @@
+import 'package:catering6/models/user.dart';
 import 'package:flutter/material.dart';
-
 import '../../constants.dart';
 import 'components/complete_profile_form.dart';
 
-class CompleteProfileScreen extends StatelessWidget {
-  static String routeName = "/complete_profile";
+class CompleteProfileScreen extends StatefulWidget {
+  final User user;
+  const CompleteProfileScreen({super.key, required this.user});
 
-  const CompleteProfileScreen({super.key});
+  @override
+  State<CompleteProfileScreen> createState() => _CompleteProfileScreenState();
+}
+
+class _CompleteProfileScreenState extends State<CompleteProfileScreen> {
+  // static String routeName = "/complete_profile";
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -28,7 +35,7 @@ class CompleteProfileScreen extends StatelessWidget {
                     textAlign: TextAlign.center,
                   ),
                   const SizedBox(height: 16),
-                  const CompleteProfileForm(),
+                  CompleteProfileForm(user: widget.user,),
                   const SizedBox(height: 30),
                   Text(
                     "By continuing your confirm that you agree \nwith our Term and Condition",
