@@ -1,5 +1,7 @@
+import 'package:catering6/provider/cartProvider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:provider/provider.dart';
 
 import '../../../constants.dart';
 
@@ -7,6 +9,10 @@ class CheckoutCard extends StatelessWidget {
   const CheckoutCard({
     Key? key,
   }) : super(key: key);
+
+  String formatRupiah(String nominal) {
+    return 'Rp. ${nominal.replaceAllMapped(RegExp(r'(\d)(?=(\d{3})+(?!\d))'), (Match m) => '${m[1]}.')}';
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -38,22 +44,32 @@ class CheckoutCard extends StatelessWidget {
             const SizedBox(height: 16),
             Row(
               children: [
-                const Expanded(
-                  child: Text.rich(
-                    TextSpan(
-                      text: "Total:\n",
-                      children: [
+                Expanded(
+                  child: Consumer<CartProvider>(
+                    builder: (context, cart, _) {
+                      // Mengambil total harga dari CartProvider
+                      String totalHarga =
+                          formatRupiah(cart.totalAmount.toString());
+                      return Text.rich(
                         TextSpan(
-                          text: "\Rp. 0",
-                          style: TextStyle(fontSize: 16, color: Colors.black),
+                          text: "Total:\n",
+                          children: [
+                            TextSpan(
+                              text: totalHarga,
+                              style:
+                                  TextStyle(fontSize: 16, color: Colors.black),
+                            ),
+                          ],
                         ),
-                      ],
-                    ),
+                      );
+                    },
                   ),
                 ),
                 Expanded(
                   child: ElevatedButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      // Tambahkan logika untuk menangani proses checkout
+                    },
                     child: const Text("Check Out"),
                   ),
                 ),

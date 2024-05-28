@@ -6,7 +6,7 @@ import 'package:provider/provider.dart';
 class CartScreen extends StatelessWidget {
   static String routeName = "/cart";
 
-  const CartScreen({super.key});
+  const CartScreen({Key? key});
 
   String formatRupiah(String nominal) {
     return 'Rp. ${nominal.replaceAllMapped(RegExp(r'(\d)(?=(\d{3})+(?!\d))'), (Match m) => '${m[1]}.')}';
@@ -29,8 +29,22 @@ class CartScreen extends StatelessWidget {
             title: Text(item.product.title),
             subtitle: Text('Jumlah: ${item.numOfItem}'),
             // trailing: Text('\$${item.product.price * item.numOfItem}'),
-            trailing: Text(
-                formatRupiah(item.product.price.toString() * item.numOfItem)),
+            trailing: Row(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Text(
+                  formatRupiah((item.product.price * item.numOfItem).toString()),
+                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                ),
+                IconButton(
+                  icon: Icon(Icons.delete),
+                  onPressed: () {
+                    // Saat ikon keranjang sampah ditekan, hapus item dari keranjang
+                    cart.removeItem(item.product);
+                  },
+                ),
+              ],
+            ),
           );
         },
       ),
@@ -38,6 +52,7 @@ class CartScreen extends StatelessWidget {
     );
   }
 }
+
 
 
 // import 'package:flutter/material.dart';
