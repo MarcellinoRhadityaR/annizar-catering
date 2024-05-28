@@ -22,7 +22,6 @@ class Package {
 }
 
 // Our demo Products
-
 List<Package> demoPackage = [
   Package(
     id: 1,
@@ -30,9 +29,8 @@ List<Package> demoPackage = [
       "assets/images/B1.png",
     ],
     title: "Paket Ulang Tahun",
-    price: 9000,
-    description:
-        "Paket Ulang Tahun terdiri dari beberapa hidangan yang cocok untuk pesta ulang tahun.",
+    price: 250000,
+    description: "Paket Ulang Tahun terdiri dari beberapa hidangan yang cocok untuk pesta ulang tahun.",
     rating: 4.8,
     isFavourite: true,
     isPopular: true,
@@ -43,9 +41,8 @@ List<Package> demoPackage = [
       "assets/images/B2.png",
     ],
     title: "Paket Selametan",
-    price: 5000,
-    description:
-        "Paket Selametan berisi makanan-makanan tradisional yang biasa disajikan dalam acara selametan.",
+    price: 300000,
+    description: "Paket Selametan berisi makanan-makanan tradisional yang biasa disajikan dalam acara selametan.",
     rating: 4.1,
     isPopular: true,
   ),

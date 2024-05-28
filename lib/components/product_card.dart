@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-
+import 'package:provider/provider.dart';
 import '../constants.dart';
 import '../models/Product.dart';
+import '../screens/home/components/favorites_provider.dart';
 
 class ProductCard extends StatelessWidget {
   const ProductCard({
@@ -23,6 +24,9 @@ class ProductCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // Mengambil instance FavoritesProvider dari context
+    final favoritesProvider = Provider.of<FavoritesProvider>(context);
+
     return SizedBox(
       width: width,
       child: GestureDetector(
@@ -51,7 +55,7 @@ class ProductCard extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
-                  "${formatRupiah(product.price.toString())}",
+                  formatRupiah(product.price.toString()),
                   style: const TextStyle(
                     fontSize: 14,
                     fontWeight: FontWeight.w600,
@@ -60,13 +64,19 @@ class ProductCard extends StatelessWidget {
                 ),
                 InkWell(
                   borderRadius: BorderRadius.circular(50),
-                  onTap: () {},
+                  onTap: () {
+                    if (favoritesProvider.isFavoriteProduct(product)) {
+                      favoritesProvider.removeFavorite(product);
+                    } else {
+                      favoritesProvider.addFavorite(product);
+                    }
+                  },
                   child: Container(
                     padding: const EdgeInsets.all(6),
                     height: 24,
                     width: 24,
                     decoration: BoxDecoration(
-                      color: product.isFavourite
+                      color: favoritesProvider.isFavoriteProduct(product)
                           ? kPrimaryColor.withOpacity(0.15)
                           : kSecondaryColor.withOpacity(0.1),
                       shape: BoxShape.circle,
@@ -74,18 +84,20 @@ class ProductCard extends StatelessWidget {
                     child: SvgPicture.asset(
                       "assets/icons/Heart Icon_2.svg",
                       colorFilter: ColorFilter.mode(
-                          product.isFavourite
-                              ? const Color(0xFFFF4848)
-                              : const Color(0xFFDBDEE4),
-                          BlendMode.srcIn),
+                        favoritesProvider.isFavoriteProduct(product)
+                            ? const Color(0xFFFF4848)
+                            : const Color(0xFFDBDEE4),
+                        BlendMode.srcIn,
+                      ),
                     ),
                   ),
                 ),
               ],
-            )
+            ),
           ],
         ),
       ),
     );
   }
 }
+

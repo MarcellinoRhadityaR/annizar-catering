@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:catering6/screens/splash/splash_screen.dart';
 import 'package:provider/provider.dart';
 import 'package:catering6/provider/cartProvider.dart';
 
 import 'routes.dart';
+import 'screens/home/components/favorites_provider.dart';
 import 'theme.dart';
 
 void main() {
@@ -11,6 +13,7 @@ void main() {
   runApp(MultiProvider(
     providers: [
       ChangeNotifierProvider(create: (_) => CartProvider()),
+      ChangeNotifierProvider(create: (_) => FavoritesProvider()),
     ],
     child: const MyApp(),
   ));
@@ -19,7 +22,6 @@ void main() {
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -31,3 +33,4 @@ class MyApp extends StatelessWidget {
     );
   }
 }
+
