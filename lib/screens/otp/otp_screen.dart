@@ -5,9 +5,10 @@ import '../../constants.dart';
 import 'components/otp_form.dart';
 
 class OtpScreen extends StatelessWidget {
+  final String email;
   static String routeName = "/otp";
 
-  const OtpScreen({super.key});
+  const OtpScreen({super.key, required this.email});
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -26,7 +27,7 @@ class OtpScreen extends StatelessWidget {
                   "OTP Verification",
                   style: headingStyle,
                 ),
-                const Text("We sent your code to +1 898 860 ***"),
+                const Text("Segera periksa gmail anda untuk menerima kode OTP"),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
@@ -49,7 +50,9 @@ class OtpScreen extends StatelessWidget {
                     ),
                   ],
                 ),
-                const OtpForm(),
+                OtpForm(
+                  email: email,
+                ),
                 const SizedBox(height: 20),
                 GestureDetector(
                   onTap: () {
