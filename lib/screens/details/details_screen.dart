@@ -1,9 +1,7 @@
+import 'package:catering6/screens/details/details_screen2.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:catering6/screens/cart/cart_screen.dart';
-
 import '../../models/Product.dart';
-import 'components/color_dots.dart';
 import 'components/product_description.dart';
 import 'components/product_images.dart';
 import 'components/top_rounded_container.dart';
@@ -44,35 +42,6 @@ class DetailsScreen extends StatelessWidget {
             ),
           ),
         ),
-        actions: [
-          Row(
-            children: [
-              Container(
-                margin: const EdgeInsets.only(right: 20),
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 12, vertical: 4),
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(14),
-                ),
-                child: Row(
-                  children: [
-                    const Text(
-                      "4.7",
-                      style: TextStyle(
-                        fontSize: 14,
-                        color: Colors.black,
-                        fontWeight: FontWeight.w600,
-                      ),
-                    ),
-                    const SizedBox(width: 4),
-                    SvgPicture.asset("assets/icons/Star Icon.svg"),
-                  ],
-                ),
-              ),
-            ],
-          ),
-        ],
       ),
       body: ListView(
         children: [
@@ -83,13 +52,12 @@ class DetailsScreen extends StatelessWidget {
               children: [
                 ProductDescription(
                   product: product,
-                  pressOnSeeMore: () {},
                 ),
                 TopRoundedContainer(
                   color: const Color(0xFFF6F7F9),
                   child: Column(
                     children: [
-                      ColorDots(product: product),
+                      DetailsScreen2(product: product),
                     ],
                   ),
                 ),
@@ -121,3 +89,4 @@ class ProductDetailsArguments {
 
   ProductDetailsArguments({required this.product});
 }
+
