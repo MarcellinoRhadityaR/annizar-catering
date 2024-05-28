@@ -9,15 +9,18 @@ class PackageSummary extends StatelessWidget {
   });
 
   final Package package;
+  String formatRupiah(String nominal) {
+    return 'Rp. ${nominal.replaceAllMapped(RegExp(r'(\d)(?=(\d{3})+(?!\d))'), (Match m) => '${m[1]}.')}';
+  }
 
   @override
   Widget build(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
-children: [
+      children: [
         // const SizedBox(height: 8),
         Text(
-          "\Rp.${package.price}",
+          "${formatRupiah(package.price.toString())}",
           style: const TextStyle(
             fontSize: 25,
             fontWeight: FontWeight.bold,

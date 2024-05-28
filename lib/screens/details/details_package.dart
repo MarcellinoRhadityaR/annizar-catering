@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
-//import 'package:catering6/screens/details/components/color_dots_package.dart';
 import 'package:catering6/screens/details/components/package_description.dart';
 import 'package:catering6/screens/details/components/package_images.dart';
 import 'package:catering6/screens/details/components/top_rounded_container.dart';
-//import 'package:flutter_svg/flutter_svg.dart';
 import 'package:catering6/screens/cart/cart_screen.dart';
 import '../../models/Package.dart';
 import 'package:catering6/screens/details/details_package2.dart';
@@ -15,7 +13,8 @@ class DetailsPackage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final PackageDetailsArguments args = ModalRoute.of(context)!.settings.arguments as PackageDetailsArguments;
+    final PackageDetailsArguments args =
+        ModalRoute.of(context)!.settings.arguments as PackageDetailsArguments;
     final package = args.package;
     return Scaffold(
       extendBody: true,
@@ -43,34 +42,6 @@ class DetailsPackage extends StatelessWidget {
             ),
           ),
         ),
-        // actions: [
-        //   Row(
-        //     children: [
-        //       Container(
-        //         margin: const EdgeInsets.only(right: 20),
-        //         padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 4),
-        //         decoration: BoxDecoration(
-        //           color: Colors.white,
-        //           borderRadius: BorderRadius.circular(14),
-        //         ),
-        //         child: Row(
-        //           children: [
-        //             const Text(
-        //               "4.7",
-        //               style: TextStyle(
-        //                 fontSize: 14,
-        //                 color: Colors.black,
-        //                 fontWeight: FontWeight.w600,
-        //               ),
-        //             ),
-        //             const SizedBox(width: 4),
-        //             SvgPicture.asset("assets/icons/Star Icon.svg"),
-        //           ],
-        //         ),
-        //       ),
-        //     ],
-        //   ),
-        // ],
       ),
       body: ListView(
         children: [
