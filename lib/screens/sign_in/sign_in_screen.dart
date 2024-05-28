@@ -1,3 +1,4 @@
+import 'package:catering6/screens/complete_profile/complete_profile_screen.dart';
 import 'package:flutter/material.dart';
 
 import '../../components/no_account_text.dart';
