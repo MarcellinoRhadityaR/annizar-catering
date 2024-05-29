@@ -6,7 +6,6 @@ import 'package:flutter/services.dart';
 import '../../../components/custom_surfix_icon.dart';
 import '../../../components/form_error.dart';
 import '../../../constants.dart';
-import '../../otp/otp_screen.dart';
 
 class CompleteProfileForm extends StatefulWidget {
   final User user;
@@ -23,8 +22,6 @@ class _CompleteProfileFormState extends State<CompleteProfileForm> {
   String? address;
 
   final TextEditingController _nameController = TextEditingController();
-
-  // final AuthService testingInstance = AuthService();
 
   void addError({String? error}) {
     if (!errors.contains(error)) {
@@ -47,7 +44,6 @@ class _CompleteProfileFormState extends State<CompleteProfileForm> {
     setState(() {
       _nameController.text = widget.user.name;
     });
-
     super.initState();
   }
 
@@ -61,19 +57,30 @@ class _CompleteProfileFormState extends State<CompleteProfileForm> {
 
   void submitCompleteProfile() async {
     if (_formKey.currentState!.validate()) {
-      
-    }
-    try {
-      _completeProfile.completeProfile(
-          id: widget.user.id,
-          alamat: address!,
-          idKota: 1,
-          kodePos: "777",
-          telp: phoneNumber!);
-      Navigator.pushReplacement(
-          context, MaterialPageRoute(builder: (context) => HomeScreen()));
-    } catch (e) {
-      print(e);
+      _formKey.currentState!.save();
+      print("Phone Number: $phoneNumber");
+      print("Address: $address");
+      if (phoneNumber != null && address != null) {
+        try {
+          await _completeProfile.completeProfile(
+            id: widget.user.id,
+            alamat: address!,
+            idKota: 1, // Hardcoded for now
+            kodePos: "777", // Hardcoded for now
+            telp: phoneNumber!, provinsi: 1,
+          );
+          Navigator.pushReplacement(
+            context,
+            MaterialPageRoute(builder: (context) => HomeScreen()),
+          );
+        } catch (e) {
+          print("Error during completeProfile: $e");
+        }
+      } else {
+        print("Phone Number or Address is null");
+      }
+    } else {
+      print("Form validation failed");
     }
   }
 
@@ -147,13 +154,7 @@ class _CompleteProfileFormState extends State<CompleteProfileForm> {
           FormError(errors: errors),
           const SizedBox(height: 20),
           ElevatedButton(
-            onPressed: () {
-              // if (_formKey.currentState!.validate()) {
-              //   Navigator.pushNamed(context, OtpScreen.routeName);
-              // }
-              submitCompleteProfile();
-              // await testingInstance.register(nama: 'nama');
-            },
+            onPressed: submitCompleteProfile,
             child: const Text("Continue"),
           ),
         ],
