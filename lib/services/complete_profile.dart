@@ -1,5 +1,4 @@
 import 'dart:convert';
-import 'package:catering6/models/user.dart';
 import 'package:http/http.dart' as http;
 
 class CompleteProfile {
@@ -11,6 +10,7 @@ class CompleteProfile {
     required int idKota,
     required String kodePos,
     required String telp,
+    required int provinsi, // Tambahkan ini
   }) async {
     try {
       final response = await http.post(
@@ -24,17 +24,17 @@ class CompleteProfile {
           'id': id,
           'alamat': alamat,
           'kota': idKota,
-          'kode_pos': kodePos,
-          'telepon': telp,
+          'kodePos': kodePos,
+          'telp': telp,
+          'provinsi': provinsi, // Tambahkan ini
         }),
       );
 
-      Map<String, dynamic> mapBodyResponse = json.decode(response.body);
-
       if (response.statusCode == 201) {
-        print('Profile completion successful: ${mapBodyResponse['message']}');
+        print(
+            'Profile completion successful: ${jsonDecode(response.body)['message']}');
       } else {
-        throw ('Profile completion failed. Status: ${mapBodyResponse['message']}.');
+        throw ('Profile completion failed. Status: ${jsonDecode(response.body)['message']}.');
       }
     } catch (e) {
       throw ('Error occurred: $e');
