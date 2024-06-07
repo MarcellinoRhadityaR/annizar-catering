@@ -1,36 +1,33 @@
+import 'package:catering6/screens/details/components/package_summary2.dart';
 import 'package:flutter/material.dart';
-
 import '../../../components/rounded_icon_btn.dart';
 import '../../../constants.dart';
 import '../../../models/Product.dart';
+
+void updateQuantity(
+    int delta, Product product, void Function(int) onQuantityChanged) {
+  product.quantity += delta;
+  onQuantityChanged(product.quantity);
+}
 
 class ColorDots extends StatelessWidget {
   const ColorDots({
     Key? key,
     required this.product,
+    required this.onQuantityChanged,
   }) : super(key: key);
 
   final Product product;
+  final void Function(int) onQuantityChanged;
 
   @override
   Widget build(BuildContext context) {
-    // Now this is fixed and only for demo
-    int selectedColor = 3;
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 20),
       child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          const Spacer(),
-          RoundedIconBtn(
-            icon: Icons.remove,
-            press: () {},
-          ),
-          const SizedBox(width: 20),
-          RoundedIconBtn(
-            icon: Icons.add,
-            showShadow: true,
-            press: () {},
-          ),
+          PackageSummary2(product: product),
         ],
       ),
     );
@@ -39,13 +36,15 @@ class ColorDots extends StatelessWidget {
 
 class ColorDot extends StatelessWidget {
   const ColorDot({
-    Key? key,
+    super.key,
     required this.color,
     this.isSelected = false,
-  }) : super(key: key);
+    required this.product,
+  });
 
   final Color color;
   final bool isSelected;
+  final Product product;
 
   @override
   Widget build(BuildContext context) {
