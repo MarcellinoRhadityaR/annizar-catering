@@ -1,6 +1,7 @@
 import 'package:catering6/components/package_card.dart';
 import 'package:catering6/models/Package.dart';
 import 'package:catering6/screens/details/details_package.dart';
+import 'package:catering6/screens/package/package_offers.dart';
 import 'package:flutter/material.dart';
 import 'section_title_package.dart';
 
@@ -17,7 +18,9 @@ class SpecialOffers extends StatelessWidget {
           padding: const EdgeInsets.symmetric(horizontal: 20),
           child: SectionTitlePackage(
             title: "Special for you",
-            press: () {},
+            press: () {
+              Navigator.pushNamed(context, PackageOffers.routeName);
+            },
           ),
         ),
         const SizedBox(height: 10),

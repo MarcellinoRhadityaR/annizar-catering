@@ -19,14 +19,14 @@ class ProfileScreen extends StatefulWidget {
 class _ProfileScreenState extends State<ProfileScreen> {
   late String _imagePath = ""; // Path to user image
 
-  // Future<void> _pickImage(ImageSource source) async {
-  //   final pickedFile = await ImagePicker().getImage(source: source);
-  //   if (pickedFile != null) {
-  //     setState(() {
-  //       _imagePath = pickedFile.path;
-  //     });
-  //   }
-  // }
+  Future<void> _pickImage(ImageSource source) async {
+    final pickedFile = await ImagePicker().pickImage(source: source);
+    if (pickedFile != null) {
+      setState(() {
+        _imagePath = pickedFile.path;
+      });
+    }
+  }
 
   @override
   Widget build(BuildContext context) {

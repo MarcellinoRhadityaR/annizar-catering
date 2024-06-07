@@ -1,8 +1,8 @@
 
+import 'package:catering6/provider/cartProvider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import '../../../models/Cart.dart'; // Import Cart model
-import '../../cart/components/cart_provider.dart'; // Import CartProvider
+import '../../../models/Cart.dart'; // Import Cart model 
 
 class CheckoutCard extends StatefulWidget {
   const CheckoutCard({
