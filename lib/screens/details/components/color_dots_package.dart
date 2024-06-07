@@ -31,37 +31,6 @@ class ColorDotsPackage extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           PackageSummary(package: package),
-          Row(
-            // Tampilkan harga di sini
-            mainAxisAlignment: MainAxisAlignment.end,
-            children: [
-              RoundedIconBtn(
-                icon: Icons.remove,
-                press: () {
-                  updateQuantity(-1, package, onQuantityChanged);
-                },
-              ),
-              const SizedBox(width: 20),
-              CircleAvatar(
-                backgroundColor: kPrimaryColor,
-                child: Text(
-                  package.quantity.toString(),
-                  style: const TextStyle(
-                    color: Colors.white,
-                    fontSize: 18,
-                  ),
-                ),
-              ),
-              const SizedBox(width: 20),
-              RoundedIconBtn(
-                icon: Icons.add,
-                showShadow: true,
-                press: () {
-                  updateQuantity(1, package, onQuantityChanged);
-                },
-              ),
-            ],
-          ),
         ],
       ),
     );
