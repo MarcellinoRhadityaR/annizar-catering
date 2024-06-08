@@ -1,3 +1,7 @@
+import 'dart:js';
+
+import 'package:catering6/screens/details/details_package.dart';
+import 'package:catering6/screens/package/package_offers.dart';
 import 'package:flutter/widgets.dart';
 import 'package:catering6/screens/products/products_screen.dart';
 
@@ -26,6 +30,8 @@ final Map<String, WidgetBuilder> routes = {
   // CompleteProfileScreen.routeName: (context) => const CompleteProfileScreen(),
   // OtpScreen.routeName: (context) => const OtpScreen(),
   HomeScreen.routeName: (context) => const HomeScreen(),
+  DetailsPackage.routeName: (context) => const DetailsPackage(),
+  PackageOffers.routeName: (context) => const PackageOffers(),
   ProductsScreen.routeName: (context) => const ProductsScreen(),
   DetailsScreen.routeName: (context) => const DetailsScreen(),
   CartScreen.routeName: (context) => const CartScreen(),
