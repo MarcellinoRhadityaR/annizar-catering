@@ -27,6 +27,7 @@ class MyApp extends StatelessWidget {
       theme: AppTheme.lightTheme(context),
       initialRoute: SplashScreen.routeName,
       routes: routes,
+      onGenerateRoute: onGenerateRoute,
     );
   }
 }
