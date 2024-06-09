@@ -1,3 +1,13 @@
+
+import 'package:flutter/material.dart';
+import 'package:catering6/screens/details/components/package_description.dart';
+import 'package:catering6/screens/details/components/package_images.dart';
+import 'package:catering6/screens/details/components/top_rounded_container.dart';
+import '../../models/Package.dart';
+import 'package:catering6/screens/details/details_package2.dart';
+// import '../cart/cart_screen.dart';
+import 'package:url_launcher/url_launcher.dart';
+
 import 'package:catering6/models/Package.dart';
 import 'package:catering6/screens/details/components/package_description.dart';
 import 'package:catering6/screens/details/components/package_images.dart';
@@ -16,6 +26,7 @@ class DetailsPackage extends StatelessWidget {
     final PackageDetailsArguments args =
         ModalRoute.of(context)!.settings.arguments as PackageDetailsArguments;
     final package = args.package;
+    final Uri whatsApp = Uri.parse('https://wa.link/rhri4q');
     return Scaffold(
       extendBody: true,
       extendBodyBehindAppBar: true,
@@ -52,7 +63,6 @@ class DetailsPackage extends StatelessWidget {
               children: [
                 PackageDescription(
                   package: package,
-                  // pressOnSeeMore: () {},
                 ),
                 TopRoundedContainer(
                   color: const Color(0xFFF6F7F9),
@@ -73,10 +83,10 @@ class DetailsPackage extends StatelessWidget {
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
             child: ElevatedButton(
-              onPressed: () {
-                Navigator.pushNamed(context, CartScreen.routeName);
-              },
-              child: const Text("Add To Cart"),
+              onPressed: (() async {
+                launchUrl(whatsApp);
+              }),
+              child: const Text("Chat Seller"),
             ),
           ),
         ),

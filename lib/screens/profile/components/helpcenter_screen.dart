@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../../../theme.dart';
 
 class HelpCenterScreen extends StatelessWidget {
   @override
@@ -8,7 +9,6 @@ class HelpCenterScreen extends StatelessWidget {
         title: Text('Help Center'),
       ),
       body: ListView(
-        
         padding: EdgeInsets.all(16.0),
         children: [
           Text(

@@ -1,6 +1,5 @@
 import 'package:catering6/screens/details/components/package_summary2.dart';
 import 'package:flutter/material.dart';
-
 import '../../../components/rounded_icon_btn.dart';
 import '../../../constants.dart';
 import '../../../models/Product.dart';
@@ -29,6 +28,7 @@ class ColorDots extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           PackageSummary2(product: product),
+          
           Row(
             // Tampilkan harga di sini
             mainAxisAlignment: MainAxisAlignment.end,
