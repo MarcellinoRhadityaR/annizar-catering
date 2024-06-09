@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../../../models/Cart.dart'; // Import Cart model
 import '../../cart/components/cart_provider.dart'; // Import CartProvider
+import 'payment_screen.dart'; // Import PaymentScreen
 
 class CheckoutCard extends StatefulWidget {
   const CheckoutCard({
@@ -63,7 +64,8 @@ class _CheckoutCardState extends State<CheckoutCard> {
                       children: [
                         TextSpan(
                           text: "\Rp. $totalPrice", // Display total price
-                          style: TextStyle(fontSize: 16, color: Colors.black),
+                          style: const TextStyle(
+                              fontSize: 16, color: Colors.black),
                         ),
                       ],
                     ),
@@ -83,12 +85,25 @@ class _CheckoutCardState extends State<CheckoutCard> {
                               children: [
                                 ListTile(
                                   title: const Text("Cash on Delivery (COD)"),
-                                  onTap: () {setState(() {
+                                  onTap: () {
+                                    setState(() {
                                       _isCODSelected = true;
                                     });
-                                    // Process COD payment
-                                    // Add your logic here
                                     Navigator.pop(context);
+                                  },
+                                ),
+                                ListTile(
+                                  title: const Text("Online Payment"),
+                                  onTap: () {
+                                    Navigator.pop(context);
+                                    Navigator.pushNamed(
+                                      context,
+                                      PaymentScreen.routeName,
+                                      arguments: {
+                                        'totalPrice': totalPrice,
+                                        'paymentMethod': 'Online'
+                                      },
+                                    );
                                   },
                                 ),
                               ],
@@ -102,11 +117,10 @@ class _CheckoutCardState extends State<CheckoutCard> {
                 ),
               ],
             ),
-            // Show Midtrans payment info if Midtrans is selected
             if (_isCODSelected)
-              Column(
+              const Column(
                 children: [
-                  const SizedBox(height: 16),
+                  SizedBox(height: 16),
                   Text(
                     "Payment via COD",
                     style: TextStyle(fontSize: 14, color: Colors.black),
