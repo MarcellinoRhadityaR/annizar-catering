@@ -59,22 +59,22 @@ class _MyAccountScreenState extends State<MyAccountScreen> {
           content: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-              ListTile(
-                leading: Icon(Icons.photo_library),
-                title: Text('Gallery'),
-                onTap: () async {
-                  final file = await picker.getImage(source: ImageSource.gallery);
-                  Navigator.pop(context, file);
-                },
-              ),
-              ListTile(
-                leading: Icon(Icons.camera_alt),
-                title: Text('Camera'),
-                onTap: () async {
-                  final file = await picker.getImage(source: ImageSource.camera);
-                  Navigator.pop(context, file);
-                },
-              ),
+              // ListTile(
+              //   leading: Icon(Icons.photo_library),
+              //   title: Text('Gallery'),
+              //   onTap: () async {
+              //     final file = await picker.getImage(source: ImageSource.gallery);
+              //     Navigator.pop(context, file);
+              //   },
+              // ),
+              // ListTile(
+              //   leading: Icon(Icons.camera_alt),
+              //   title: Text('Camera'),
+              //   onTap: () async {
+              //     final file = await picker.getImage(source: ImageSource.camera);
+              //     Navigator.pop(context, file);
+              //   },
+              // ),
             ],
           ),
         );

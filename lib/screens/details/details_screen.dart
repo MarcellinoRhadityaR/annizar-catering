@@ -1,6 +1,11 @@
+import 'package:catering6/provider/cartProvider.dart';
 import 'package:catering6/screens/details/details_screen2.dart';
 import 'package:flutter/material.dart';
 import 'package:catering6/screens/cart/cart_screen.dart';
+
+import 'package:provider/provider.dart';
+
+
 import '../../models/Product.dart';
 import 'components/product_description.dart';
 import 'components/product_images.dart';
@@ -58,6 +63,7 @@ class DetailsScreen extends StatelessWidget {
                   child: Column(
                     children: [
                       DetailsScreen2(product: product),
+
                     ],
                   ),
                 ),
@@ -73,6 +79,8 @@ class DetailsScreen extends StatelessWidget {
             padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
             child: ElevatedButton(
               onPressed: () {
+                Provider.of<CartProvider>(context, listen: false)
+                    .addToCart(product);
                 Navigator.pushNamed(context, CartScreen.routeName);
               },
               child: const Text("Add To Cart"),

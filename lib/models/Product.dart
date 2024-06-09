@@ -2,6 +2,7 @@ class Product {
   final int id;
   final String title, description;
   final List<String> images;
+  final double rating;
   final int price;
   bool isFavourite;
   final bool isPopular;
@@ -10,6 +11,7 @@ class Product {
   Product({
     required this.id,
     required this.images,
+    this.rating = 0.0,
     this.isFavourite = false,
     this.isPopular = false,
     required this.title,

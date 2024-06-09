@@ -23,8 +23,6 @@ class ColorDotsPackage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // Now this is fixed and only for demo
-    // int selectedColor = 3;
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 20),
       child: Row(

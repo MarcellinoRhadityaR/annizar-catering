@@ -1,3 +1,4 @@
+
 import 'package:flutter/material.dart';
 import 'package:catering6/screens/details/components/package_description.dart';
 import 'package:catering6/screens/details/components/package_images.dart';
@@ -7,8 +8,16 @@ import 'package:catering6/screens/details/details_package2.dart';
 // import '../cart/cart_screen.dart';
 import 'package:url_launcher/url_launcher.dart';
 
+import 'package:catering6/models/Package.dart';
+import 'package:catering6/screens/details/components/package_description.dart';
+import 'package:catering6/screens/details/components/package_images.dart';
+import 'package:catering6/screens/details/details_package2.dart';
+import 'package:flutter/material.dart';
+import 'package:catering6/screens/cart/cart_screen.dart';
+import 'components/top_rounded_container.dart';
+
 class DetailsPackage extends StatelessWidget {
-  static String routeName = "details_package";
+  static String routeName = "/details_package";
 
   const DetailsPackage({super.key});
 

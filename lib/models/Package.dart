@@ -26,7 +26,7 @@ List<Package> demoPackage = [
   Package(
     id: 1,
     images: [
-      "images/B1.png",
+      "assets/images/B1.png",
     ],
     title: "Paket Ulang Tahun",
     price: 250000,
@@ -38,7 +38,7 @@ List<Package> demoPackage = [
   Package(
     id: 2,
     images: [
-      "images/B2.png",
+      "assets/images/B2.png",
     ],
     title: "Paket Selametan",
     price: 300000,

@@ -12,22 +12,25 @@ class HomeHeader extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 20),
+      padding: const EdgeInsets.symmetric(
+        horizontal: 20,
+      ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          const Expanded(child: SearchField()),
+          const Expanded(
+              child: Image(
+            image: AssetImage("assets/images/logo toko.png"),
+            height: 50,
+            width: 50,
+            alignment: Alignment.topLeft,
+          )),
           const SizedBox(width: 16),
           IconBtnWithCounter(
             svgSrc: "assets/icons/Cart Icon.svg",
             press: () => Navigator.pushNamed(context, CartScreen.routeName),
           ),
           const SizedBox(width: 8),
-          IconBtnWithCounter(
-            svgSrc: "assets/icons/Bell.svg",
-            numOfitem: 3,
-            press: () {},
-          ),
         ],
       ),
     );

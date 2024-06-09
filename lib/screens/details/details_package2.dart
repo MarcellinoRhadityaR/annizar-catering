@@ -8,14 +8,16 @@ class DetailsPackage2 extends StatefulWidget {
   DetailsPackage2({required this.package}); // konstruktor ng DetailsPackage2
 
   @override
-  _DetailsPackageState createState() => _DetailsPackageState(package: package); // ipasa ang package sa konstruktor ng _DetailsPackageState
+  _DetailsPackageState createState() => _DetailsPackageState(
+      package:
+          package); // ipasa ang package sa konstruktor ng _DetailsPackageState
 }
-
 
 class _DetailsPackageState extends State<DetailsPackage2> {
   final Package package; // inisialisasi variabel package
 
-  _DetailsPackageState({required this.package}); // konstruktor untuk menginisialisasi package
+  _DetailsPackageState(
+      {required this.package}); // konstruktor untuk menginisialisasi package
 
   void _updateQuantity(int quantity) {
     setState(() {

@@ -4,6 +4,13 @@ import '../../../models/Cart.dart'; // Import Cart model
 import '../../cart/components/cart_provider.dart'; // Import CartProvider
 import 'payment_screen.dart'; // Import PaymentScreen
 
+
+import 'package:catering6/provider/cartProvider.dart';
+import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import '../../../models/Cart.dart'; // Import Cart model 
+
+
 class CheckoutCard extends StatefulWidget {
   const CheckoutCard({
     Key? key,
@@ -64,8 +71,10 @@ class _CheckoutCardState extends State<CheckoutCard> {
                       children: [
                         TextSpan(
                           text: "\Rp. $totalPrice", // Display total price
+
                           style: const TextStyle(
                               fontSize: 16, color: Colors.black),
+
                         ),
                       ],
                     ),
@@ -85,6 +94,7 @@ class _CheckoutCardState extends State<CheckoutCard> {
                               children: [
                                 ListTile(
                                   title: const Text("Cash on Delivery (COD)"),
+
                                   onTap: () {
                                     setState(() {
                                       _isCODSelected = true;
@@ -106,6 +116,7 @@ class _CheckoutCardState extends State<CheckoutCard> {
                                     );
                                   },
                                 ),
+
                               ],
                             ),
                           );
@@ -117,10 +128,12 @@ class _CheckoutCardState extends State<CheckoutCard> {
                 ),
               ],
             ),
+
             if (_isCODSelected)
               const Column(
                 children: [
                   SizedBox(height: 16),
+
                   Text(
                     "Payment via COD",
                     style: TextStyle(fontSize: 14, color: Colors.black),

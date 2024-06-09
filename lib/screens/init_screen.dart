@@ -5,7 +5,7 @@ import 'package:catering6/screens/favorite/favorite_screen.dart';
 import 'package:catering6/screens/home/home_screen.dart';
 import 'package:catering6/screens/profile/profile_screen.dart';
 
-const Color inActiveIconColor = Color(0xFFB6B6B6);
+const Color inActiveIconColor = Color.fromARGB(255, 252, 59, 0);
 
 class InitScreen extends StatefulWidget {
   const InitScreen({super.key});
@@ -56,7 +56,7 @@ class _InitScreenState extends State<InitScreen> {
             activeIcon: SvgPicture.asset(
               "assets/icons/Shop Icon.svg",
               colorFilter: const ColorFilter.mode(
-                kPrimaryColor,
+                kPrimaryLightColor,
                 BlendMode.srcIn,
               ),
             ),
